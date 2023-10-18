@@ -1,0 +1,40 @@
+Actividad 1
+
+
+La interficie seria la GUI ya que permite el uso de ventanas y objetos graficos para representar la informacion y la libertad de exploracion que ofrecen son muy buenas para los alumnos que vayan a realizar las FCTs
+
+
+Actividad 2
+
+
+1 - Eficacia  
+2 - Errores   
+3 - Recordatorio  
+4 - Aprendizaje  
+5 - Satisfaccion  
+
+
+Actividad 3
+
+Cantidad de piezas (máximo 10) → Casilla desplegable  
+Talla(Las posibles opciones son S,M,L) → RadioBoton  
+Si el usuario quiere que se lo envuelvan → Casilla de selección  
+En el caso de que sea para regalo el mensaje. → Entrada de texto  
+
+
+Activdad 4
+
+
+Formulario  
+
+Datos personales  
+Nombre    ______________  
+Dirección _____________  
+Provincia  ______________(Desplegable)  
+
+Datos de acceso  
+Usuario        _____________  
+Contraseña   _____________  
+
+Acepto las condiciones de uso (Casilla de selección)   
+    SI      NO  
