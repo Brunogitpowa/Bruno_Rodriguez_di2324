@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="NumerosPython">
+    <file>cero.png</file>
+    <file>cinco.png</file>
+    <file>cuatro.png</file>
+    <file>dos.png</file>
+    <file>nueve.png</file>
+    <file>ocho.png</file>
+    <file>seis.png</file>
+    <file>siete.png</file>
+    <file>tres.png</file>
+    <file>uno.png</file>
+  </qresource>
+</RCC>
