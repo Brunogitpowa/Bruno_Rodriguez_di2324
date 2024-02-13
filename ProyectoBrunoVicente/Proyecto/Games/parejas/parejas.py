@@ -82,13 +82,14 @@ class MemoryGame:
         for valor in valores:
             carta = Carta(valor)
             sw = ft.AnimatedSwitcher(
-                ft.Image(src=os.path.join(self.ruta,'../Figuras/tarjeta.png'), width=140, height=200),
+                ft.Image(src=os.path.join(self.ruta,'/Figuras/tarjeta.png'), width=140, height=200),
                 transition=ft.AnimatedSwitcherTransition.SCALE,
                 duration=500,
                 reverse_duration=500,
                 switch_in_curve=ft.AnimationCurve.BOUNCE_OUT,
                 switch_out_curve=ft.AnimationCurve.BOUNCE_IN,
             )
+            
             container = ft.Container(
                 content=sw,
                 alignment=ft.alignment.center,
@@ -100,6 +101,7 @@ class MemoryGame:
             )
             container.on_click = (lambda sw=sw, carta=carta: lambda event: self.build(sw, carta))()
             items.append(container)
+            
         return items
 
     def build(self, sw, carta):
@@ -117,14 +119,14 @@ class MemoryGame:
             else:
                 carta.revelar()
                 sw.content = ft.Image(
-                    src=os.path.join(f"../Figuras/{carta.obtener_valor()}.png"), width=140, height=200
+                    src=os.path.join(f"/Figuras/{carta.obtener_valor()}.png"), width=140, height=200
                 )
                 self.ultimas_cartas.append((carta, sw))
                 self.page.update()
         else:
             carta.revelar()
             sw.content = ft.Image(
-                src=os.path.join(f"../Figuras/{carta.obtener_valor()}.png"), width=140, height=200
+                src=os.path.join(f"/Figuras/{carta.obtener_valor()}.png"), width=140, height=200
             )
             self.ultimas_cartas.append((carta, sw))
             self.page.update()

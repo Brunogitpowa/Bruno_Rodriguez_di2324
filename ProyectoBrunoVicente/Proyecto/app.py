@@ -30,17 +30,13 @@ class MainWindow(QMainWindow):
         self.logo_label = QLabel()
         self.logo_label.setPixmap(pixmap)
 
-        # Carga el logo diferente
-        #pixmap_left = QPixmap(os.path.join(resources_dir, 'logoProjecte.png'))  # Asegúrate de que la ruta a la imagen es correcta
-        #pixmap_left = pixmap_left.scaled(150, 150, Qt.KeepAspectRatio)      
-        #self.logo_label_left = QLabel()
-        #self.logo_label_left.setPixmap(pixmap_left)
 
         #QLabel para el nombre de usuario
         self.username_label = QLabel()
         font = QFont("Arial", 14, QFont.Bold)  # Cambia "Arial", 14 y QFont.Bold a la fuente, tamaño y estilo que prefieras
         self.username_label.setFont(font)
 
+        #Menu superior derecho
         self.dropdown_menu = QComboBox()
         self.dropdown_menu.setFixedSize(QSize(200, 50))
         self.dropdown_menu.addItem("Salir")
@@ -131,9 +127,9 @@ class MainWindow(QMainWindow):
 
         return scroll_area
 
+
+
     #Creamos el pack del que se compondra una unidad de juego o app
-    
-    
     def create_game_box(self, game_id):
         group_box = QGroupBox()
 
@@ -173,6 +169,7 @@ class MainWindow(QMainWindow):
         image_button.setIcon(QIcon(pixmap))
         image_button.setIconSize(pixmap.size())
         image_button.clicked.connect(self.on_image_clicked)
+        image_button.game_id = game_id  # Almacena el game_id en el botón
 
         layout_horizontal.addWidget(image_button)
         layout_horizontal.addLayout(vertical_label)
@@ -190,8 +187,11 @@ class MainWindow(QMainWindow):
         return group_box
     
     def on_image_clicked(self):
+
+        game_id = self.sender().game_id
         #Crear un nuevo QDialog
         self.dialog = QDialog()
+        self.dialog.game_id = game_id
         self.dialog.setStyleSheet("background-color: grey;")
 
         self.juego_seleccionado = QLabel("Juego seleccionado")
@@ -228,8 +228,9 @@ class MainWindow(QMainWindow):
         #Mostrar el dialogo
         self.dialog.exec()
 
+
+    #Aqui conseguimos cambiar el Label superior dependiendo del usuario que se loguee
     def handle_user_logged_in(self, username):
-        # Esta función se llamará cuando se emita la señal user_logged_in
         self.username_label.setText(f"{username}") 
         
 
@@ -239,8 +240,9 @@ class MainWindow(QMainWindow):
 
     
     def play_clicked(self):
+        game_id = self.dialog.game_id 
         # Esta función se llamará cuando se haga clic en el botón "Jugar"
-        game_script_path = get_game_script(3)
+        game_script_path = get_game_script(game_id)
 
         if game_script_path is not None:
             subprocess.run(["python", game_script_path])
@@ -250,6 +252,7 @@ class MainWindow(QMainWindow):
 
     def download_clicked(self):
     # Esta función se llamará cuando se haga clic en el botón "Descargar"
+        #TODO: # Descargar el juego
         print("¡Descargando!")
 
     def cancel_clicked(self):
